@@ -23,3 +23,15 @@ def lsa2(nums,k):
             ml=max(i-hs[sum-k],ml)
     return ml
 print(lsa2(nums,k))
+def longestSubarray(self, arr, k):
+    hs = {}
+    hs[0]=-1
+    sum = 0
+    ml=0
+    for i in range(0,len(arr)):
+        sum+=arr[i]
+        if not sum in hs:
+            hs[sum]=i
+        if sum-k in hs:
+            ml=max(i-hs[sum-k],ml)
+    return ml

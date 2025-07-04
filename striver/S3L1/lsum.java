@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class lsum {
     public static void main(String[] args) {
-        int[] nums = {2,3,5,1,9};
-        int k = 10;
+        int[] nums = {10, 5, 2, 7, 1, -10};
+        int k = 15;
         System.out.println(lsa2(nums,k));  
     }
     public static int  lsa1(int[] nums,int k){
@@ -36,5 +36,19 @@ public class lsum {
         }
         return ml;
     }
-   
+    public static int longestSubarray(int[] arr, int k) {
+        int ml=0;
+        HashMap<Integer,Integer> hs = new HashMap<>();
+        hs.put(0,-1);
+        int sum = 0;
+        for(int i=0;i<arr.length;i++){
+            sum+=arr[i];
+             if(!hs.containsKey(sum))
+                hs.put(sum,i);
+            if(hs.containsKey(sum-k)){
+                ml=Math.max(ml,i-hs.get(sum-k));
+            }
+        }
+        return ml;
+    }
 }
